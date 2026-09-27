@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/remediation.schema.json",
+  "title": "Remediation",
+  "type": "object",
+  "required": [
+    "scenario_id",
+    "action_id",
+    "action_type",
+    "authorization_required"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string"
+    },
+    "action_id": {
+      "type": "string"
+    },
+    "action_type": {
+      "type": "string"
+    },
+    "authorization_required": {
+      "type": "boolean"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_plan": {
+      "type": "string"
+    },
+    "simulation_required": {
+      "type": "boolean"
+    }
+  }
+}

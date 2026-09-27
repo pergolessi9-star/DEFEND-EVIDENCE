@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/action.schema.json",
+  "title": "Action",
+  "type": "object",
+  "required": [
+    "scenario_id",
+    "decision",
+    "authorized"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "REMEDIATE",
+        "ESCALATE",
+        "ABSTAIN",
+        "BLOCK",
+        "ROLLBACK"
+      ]
+    },
+    "authorized": {
+      "type": "boolean"
+    },
+    "action": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authorization_basis": {
+      "type": "string"
+    },
+    "executed": {
+      "type": "boolean"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

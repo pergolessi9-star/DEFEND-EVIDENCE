@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/scenario.schema.json",
+  "title": "DEFEND-EVIDENCE Scenario",
+  "type": "object",
+  "required": [
+    "scenario_id",
+    "version",
+    "category",
+    "epistemic_class",
+    "telemetry",
+    "ground_truth_ref"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "pattern": "^DE-[0-9]{4}$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "credential_anomaly",
+        "identity_privilege",
+        "api_abuse",
+        "configuration_drift",
+        "suspicious_process",
+        "network_anomaly",
+        "data_exfiltration",
+        "supply_chain",
+        "ai_agent_security",
+        "benign_anomaly"
+      ]
+    },
+    "epistemic_class": {
+      "type": "string",
+      "enum": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ]
+    },
+    "telemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence.schema.json#"
+      }
+    },
+    "ground_truth_ref": {
+      "type": "string"
+    },
+    "auto_remediation_allowed": {
+      "type": "boolean"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

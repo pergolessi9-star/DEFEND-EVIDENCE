@@ -1,0 +1,42 @@
+{
+  "scenario_id": "DE-0050",
+  "version": "1.0.0",
+  "category": "suspicious_process",
+  "epistemic_class": "E2",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0050-EV-01",
+      "timestamp": "2026-09-17T03:51:00Z",
+      "source": "endpoint",
+      "event_type": "suspicious_process",
+      "observation": "suspicious_process: observable event 50",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0050-EV-02",
+      "timestamp": "2026-09-17T03:52:00Z",
+      "source": "network",
+      "event_type": "suspicious_process",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0050-EV-03",
+      "timestamp": "2026-09-17T03:53:00Z",
+      "source": "api_gateway",
+      "event_type": "suspicious_process",
+      "observation": "conflicting telemetry sources",
+      "confidence": 0.51,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0050.json",
+  "severity": "medium",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

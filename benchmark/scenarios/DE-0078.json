@@ -1,0 +1,33 @@
+{
+  "scenario_id": "DE-0078",
+  "version": "1.0.0",
+  "category": "supply_chain",
+  "epistemic_class": "E2",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0078-EV-01",
+      "timestamp": "2026-09-17T03:19:00Z",
+      "source": "endpoint",
+      "event_type": "supply_chain",
+      "observation": "supply_chain: observable event 78",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0078-EV-02",
+      "timestamp": "2026-09-17T03:20:00Z",
+      "source": "network",
+      "event_type": "supply_chain",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0078.json",
+  "severity": "medium",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

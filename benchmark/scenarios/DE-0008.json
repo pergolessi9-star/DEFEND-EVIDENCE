@@ -1,0 +1,33 @@
+{
+  "scenario_id": "DE-0008",
+  "version": "1.0.0",
+  "category": "credential_anomaly",
+  "epistemic_class": "E2",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0008-EV-01",
+      "timestamp": "2026-09-17T03:09:00Z",
+      "source": "endpoint",
+      "event_type": "credential_anomaly",
+      "observation": "credential_anomaly: observable event 8",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0008-EV-02",
+      "timestamp": "2026-09-17T03:10:00Z",
+      "source": "network",
+      "event_type": "credential_anomaly",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0008.json",
+  "severity": "medium",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/diagnosis.schema.json",
+  "title": "Diagnosis",
+  "type": "object",
+  "required": [
+    "scenario_id",
+    "finding",
+    "root_cause_level",
+    "confidence"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string"
+    },
+    "finding": {
+      "type": "string"
+    },
+    "root_cause_level": {
+      "type": "string",
+      "enum": [
+        "none",
+        "anomaly_only",
+        "proximate_cause",
+        "root_cause"
+      ]
+    },
+    "root_cause": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

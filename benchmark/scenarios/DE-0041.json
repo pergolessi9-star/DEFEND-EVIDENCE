@@ -1,0 +1,33 @@
+{
+  "scenario_id": "DE-0041",
+  "version": "1.0.0",
+  "category": "suspicious_process",
+  "epistemic_class": "E1",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0041-EV-01",
+      "timestamp": "2026-09-17T03:42:00Z",
+      "source": "endpoint",
+      "event_type": "suspicious_process",
+      "observation": "suspicious_process: observable event 41",
+      "confidence": 0.93,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0041-EV-02",
+      "timestamp": "2026-09-17T03:43:00Z",
+      "source": "network",
+      "event_type": "suspicious_process",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.93,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0041.json",
+  "severity": "medium",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

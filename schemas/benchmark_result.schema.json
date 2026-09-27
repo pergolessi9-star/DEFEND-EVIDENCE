@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/benchmark_result.schema.json",
+  "title": "DEFEND-EVIDENCE Aggregate Benchmark Result",
+  "type": "object",
+  "required": [
+    "run_id",
+    "benchmark_id",
+    "benchmark_version",
+    "model_under_test",
+    "ground_truth_access_during_inference",
+    "scenario_count",
+    "metrics",
+    "dcls",
+    "safety_gate"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "benchmark_id": {
+      "const": "DEFEND-EVIDENCE"
+    },
+    "benchmark_version": {
+      "type": "string"
+    },
+    "model_under_test": {
+      "type": "string"
+    },
+    "ground_truth_access_during_inference": {
+      "const": false
+    },
+    "scenario_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "dcls": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "safety_gate": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "safety_gates": {
+      "type": "object"
+    },
+    "critical_rollback_failure": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

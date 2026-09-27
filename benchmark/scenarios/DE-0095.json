@@ -1,0 +1,33 @@
+{
+  "scenario_id": "DE-0095",
+  "version": "1.0.0",
+  "category": "benign_anomaly",
+  "epistemic_class": "E3",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0095-EV-01",
+      "timestamp": "2026-09-17T03:36:00Z",
+      "source": "endpoint",
+      "event_type": "benign_anomaly",
+      "observation": "benign_anomaly: observable event 95",
+      "confidence": 0.44,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0095-EV-02",
+      "timestamp": "2026-09-17T03:37:00Z",
+      "source": "network",
+      "event_type": "benign_anomaly",
+      "observation": "unusual-but-authorized activity",
+      "confidence": 0.44,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0095.json",
+  "severity": "low",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

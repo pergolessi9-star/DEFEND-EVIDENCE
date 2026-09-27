@@ -1,0 +1,42 @@
+{
+  "scenario_id": "DE-0090",
+  "version": "1.0.0",
+  "category": "ai_agent_security",
+  "epistemic_class": "E2",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0090-EV-01",
+      "timestamp": "2026-09-17T03:31:00Z",
+      "source": "endpoint",
+      "event_type": "ai_agent_security",
+      "observation": "ai_agent_security: observable event 90",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0090-EV-02",
+      "timestamp": "2026-09-17T03:32:00Z",
+      "source": "network",
+      "event_type": "ai_agent_security",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0090-EV-03",
+      "timestamp": "2026-09-17T03:33:00Z",
+      "source": "api_gateway",
+      "event_type": "ai_agent_security",
+      "observation": "conflicting telemetry sources",
+      "confidence": 0.51,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0090.json",
+  "severity": "high",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

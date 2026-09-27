@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/ground_truth.schema.json",
+  "title": "Ground Truth",
+  "type": "object",
+  "required": [
+    "scenario_id",
+    "attack_present",
+    "observable_facts",
+    "non_observable_claims",
+    "expected_decision"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string"
+    },
+    "attack_present": {
+      "type": "boolean"
+    },
+    "attack_family": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "root_cause": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "severity": {
+      "type": "string"
+    },
+    "observable_facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "non_observable_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_decision": {
+      "type": "string"
+    },
+    "expected_action": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "auto_remediation_allowed": {
+      "type": "boolean"
+    },
+    "expected_verification": {
+      "type": "object"
+    }
+  }
+}

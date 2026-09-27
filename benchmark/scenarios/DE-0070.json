@@ -1,0 +1,42 @@
+{
+  "scenario_id": "DE-0070",
+  "version": "1.0.0",
+  "category": "data_exfiltration",
+  "epistemic_class": "E2",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0070-EV-01",
+      "timestamp": "2026-09-17T03:11:00Z",
+      "source": "endpoint",
+      "event_type": "data_exfiltration",
+      "observation": "data_exfiltration: observable event 70",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0070-EV-02",
+      "timestamp": "2026-09-17T03:12:00Z",
+      "source": "network",
+      "event_type": "data_exfiltration",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0070-EV-03",
+      "timestamp": "2026-09-17T03:13:00Z",
+      "source": "api_gateway",
+      "event_type": "data_exfiltration",
+      "observation": "conflicting telemetry sources",
+      "confidence": 0.51,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0070.json",
+  "severity": "high",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

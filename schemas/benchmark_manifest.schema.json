@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/benchmark_manifest.schema.json",
+  "title": "Benchmark Manifest",
+  "type": "object",
+  "required": [
+    "benchmark_id",
+    "version",
+    "dataset",
+    "scenario_count",
+    "categories",
+    "metrics",
+    "safety_gates"
+  ],
+  "properties": {
+    "benchmark_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "dataset": {
+      "type": "object"
+    },
+    "scenario_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "categories": {
+      "type": "object"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "safety_gates": {
+      "type": "object"
+    },
+    "integrity": {
+      "type": "object"
+    }
+  }
+}

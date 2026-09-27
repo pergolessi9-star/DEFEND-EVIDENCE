@@ -1,0 +1,42 @@
+{
+  "scenario_id": "DE-0040",
+  "version": "1.0.0",
+  "category": "configuration_drift",
+  "epistemic_class": "E2",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0040-EV-01",
+      "timestamp": "2026-09-17T03:41:00Z",
+      "source": "endpoint",
+      "event_type": "configuration_drift",
+      "observation": "configuration_drift: observable event 40",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0040-EV-02",
+      "timestamp": "2026-09-17T03:42:00Z",
+      "source": "network",
+      "event_type": "configuration_drift",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.68,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0040-EV-03",
+      "timestamp": "2026-09-17T03:43:00Z",
+      "source": "api_gateway",
+      "event_type": "configuration_drift",
+      "observation": "conflicting telemetry sources",
+      "confidence": 0.51,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0040.json",
+  "severity": "medium",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

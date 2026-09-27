@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/verification.schema.json",
+  "title": "Verification",
+  "type": "object",
+  "required": [
+    "scenario_id",
+    "status",
+    "checks"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "PARTIAL",
+        "FAIL"
+      ]
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "expected",
+          "observed",
+          "passed"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "expected": {},
+          "observed": {},
+          "passed": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "regression_detected": {
+      "type": "boolean"
+    },
+    "rollback_required": {
+      "type": "boolean"
+    }
+  }
+}

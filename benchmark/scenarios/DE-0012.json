@@ -1,0 +1,33 @@
+{
+  "scenario_id": "DE-0012",
+  "version": "1.0.0",
+  "category": "identity_privilege",
+  "epistemic_class": "E1",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0012-EV-01",
+      "timestamp": "2026-09-17T03:13:00Z",
+      "source": "endpoint",
+      "event_type": "identity_privilege",
+      "observation": "identity_privilege: observable event 12",
+      "confidence": 0.93,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0012-EV-02",
+      "timestamp": "2026-09-17T03:14:00Z",
+      "source": "network",
+      "event_type": "identity_privilege",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.93,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0012.json",
+  "severity": "high",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

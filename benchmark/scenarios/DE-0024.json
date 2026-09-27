@@ -1,0 +1,33 @@
+{
+  "scenario_id": "DE-0024",
+  "version": "1.0.0",
+  "category": "api_abuse",
+  "epistemic_class": "E1",
+  "telemetry": [
+    {
+      "evidence_id": "DE-0024-EV-01",
+      "timestamp": "2026-09-17T03:25:00Z",
+      "source": "endpoint",
+      "event_type": "api_abuse",
+      "observation": "api_abuse: observable event 24",
+      "confidence": 0.93,
+      "provenance": "synthetic_fixture_v1.0"
+    },
+    {
+      "evidence_id": "DE-0024-EV-02",
+      "timestamp": "2026-09-17T03:26:00Z",
+      "source": "network",
+      "event_type": "api_abuse",
+      "observation": "expected_state_delta detected",
+      "confidence": 0.93,
+      "provenance": "synthetic_fixture_v1.0"
+    }
+  ],
+  "ground_truth_ref": "ground_truth/DE-0024.json",
+  "severity": "medium",
+  "tags": [
+    "synthetic",
+    "blind-evaluation",
+    "seed-42"
+  ]
+}

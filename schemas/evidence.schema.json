@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/evidence.schema.json",
+  "title": "Evidence",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "timestamp",
+    "source",
+    "event_type",
+    "observation",
+    "confidence"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "observation": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "integrity_hash": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "string"
+    }
+  }
+}

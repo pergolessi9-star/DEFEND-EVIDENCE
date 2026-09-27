@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/scoring_config.schema.json",
+  "title": "Scoring Configuration",
+  "type": "object",
+  "required": [
+    "version",
+    "metrics",
+    "weights",
+    "hard_gates"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "weights": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "hard_gates": {
+      "type": "object"
+    },
+    "formula": {
+      "type": "string"
+    }
+  }
+}
