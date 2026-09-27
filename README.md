@@ -1,6 +1,6 @@
 # DEFEND-EVIDENCE Benchmark v1.0
 
-Synthetic inputs and a reference runner for evidence-based incident decisions. [Project site](https://defend-evidence-benchmark.gagprompt.chatgpt.site).
+Synthetic inputs and a reference runner for evidence-based incident decisions. [Project site (owner-only access)](https://defend-evidence-benchmark.gagprompt.chatgpt.site).
 
 ## Run the public package
 
