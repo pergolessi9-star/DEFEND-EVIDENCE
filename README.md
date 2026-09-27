@@ -23,12 +23,22 @@ There are ten categories with ten scenarios each. **The actual public scenario f
 
 ## Blind evaluation boundary
 
-The public repository contains `benchmark/scenarios/`, `schemas/`, `runners/` and the reference `evaluator/`. The evaluator-only `benchmark/ground_truth/`, blind predictions and prior execution reports are excluded. Scenario `ground_truth_ref` fields are references to withheld files. The evaluator now refuses to score a public-only checkout.
+The public repository contains `benchmark/scenarios/`, `schemas/`, `runners/` and the reference `evaluator/`. The evaluator-only `benchmark/ground_truth/`, blind predictions and prior execution reports are excluded. Scenario `ground_truth_ref` fields are references to withheld files. The evaluator now refuses to score a public-only checkout. Its legacy DCLS and PASS calculation is disabled. An evaluator-controlled truth directory can be supplied to `evaluator/audit_score.py` for **partial diagnostic metrics only**; the output explicitly sets `dcls` to null and `safety_gate` to `NOT_EVALUABLE`.
 
-The supplied execution package reported run `RUN-99b9d9ba506d`, DCLS 0.9102 and safety gate PASS for the included reference adapter. These are **historical outputs of that implementation**, not independent validation of a production system. In particular, the legacy evaluator hard-codes the unsupported-claim numerator to zero and treats all `OBSERVED` labels as correct without checking their source; a safe autonomous resolution counter also accumulates incorrectly. Those metrics must be redesigned and independently checked before a leaderboard or performance claim. The original report is not included as a scored public result.
+The supplied execution package reported run `RUN-99b9d9ba506d`, DCLS 0.9102 and safety gate PASS for the included reference adapter. These are **historical outputs of that implementation**, not independent validation of a production system. In particular, the legacy evaluator hard-codes the unsupported-claim numerator to zero and treats all `OBSERVED` labels as correct without checking their source; a safe autonomous resolution counter also accumulates incorrectly. The original scoring entry point has been replaced by a conservative partial audit. Real remediation, verification and rollback metrics still need a sandbox that measures state independently before a leaderboard or performance claim. The original report is not included as a scored public result.
 
 No license is granted unless one is added explicitly.
 
 ## Kaggle pilot
 
 [`kaggle/public_format_task.py`](kaggle/public_format_task.py) demonstrates a Kaggle Benchmarks SDK task for response format and evidence-ID citation only. It does **not** score DCLS or use private truth. See [`kaggle/README.md`](kaggle/README.md) for the authentication and push flow. A blind Kaggle leaderboard requires a separate evaluator-controlled truth store and a corrected scoring design.
+
+## Evaluator-controlled partial audit
+
+Keep the 100 truth files outside this public checkout. After producing predictions with `python runners/run_blind.py`, an authorized evaluator can run:
+
+```bash
+python evaluator/audit_score.py --predictions reports/predictions_blind.json --truth-dir /private/path/to/ground_truth
+```
+
+This checks file IDs, schemas, decisions, exact observed claim text and evidence IDs, named causes and reported action authorization. It **does not** attest that actions actually ran, changed state, preserved service, or rolled back. The output is not a DCLS result.
