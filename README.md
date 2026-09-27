@@ -4,15 +4,16 @@ Synthetic inputs and a reference runner for evidence-based incident decisions. [
 
 ## Run the public package
 
-Requires Python 3.11 or newer; no third-party package is needed for the public smoke check.
+Requires Python 3.11 or newer. The validator uses `jsonschema`.
 
 ```bash
 git clone https://github.com/pergolessi9-star/DEFEND-EVIDENCE.git
 cd DEFEND-EVIDENCE
+python -m pip install -r requirements.txt
 python scripts/check_public.py
 ```
 
-The check inspects all 100 scenario files, their identifiers, category and epistemic-class distribution, runs the included reference adapter without truth files, and checks the prediction envelope. It prints `PASS` on success. Its generated `reports/predictions_blind.json` is ignored by Git.
+The check validates all 100 scenario files against the JSON Schema, checks their identifiers, category and epistemic-class distribution, runs the included reference adapter without truth files, and checks the prediction envelope. It prints `PASS` on success. Its generated `reports/predictions_blind.json` is ignored by Git.
 
 To run just the reference adapter: `python runners/run_blind.py`. This adapter is an example, not a deployed DEFEND-SENTINEL implementation. Its `action.executed` flag describes a simulated action; no live remediation is performed.
 

@@ -5,18 +5,30 @@ import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
+from jsonschema import Draft202012Validator
+from referencing import Registry, Resource
 
 ROOT = Path(__file__).resolve().parents[1]
 SCENARIOS = ROOT / "benchmark" / "scenarios"
+SCHEMAS = ROOT / "schemas"
 
 
 def check() -> None:
     assert not (ROOT / "benchmark" / "ground_truth").exists(), "Private truth found in public checkout"
     files = sorted(SCENARIOS.glob("DE-*.json"))
     assert len(files) == 100, f"Expected 100 scenarios, found {len(files)}"
+    registry = Registry()
+    for path in SCHEMAS.glob("*.schema.json"):
+        schema = json.loads(path.read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(schema)
+        registry = registry.with_resource(schema["$id"], Resource.from_contents(schema))
+    validator = Draft202012Validator(
+        json.loads((SCHEMAS / "scenario.schema.json").read_text()), registry=registry
+    )
     categories, classes, ids = Counter(), Counter(), set()
     for path in files:
         scenario = json.loads(path.read_text(encoding="utf-8"))
+        validator.validate(scenario)
         sid = scenario["scenario_id"]
         assert sid == path.stem and sid not in ids
         ids.add(sid)
@@ -42,7 +54,7 @@ def check() -> None:
     assert all(required <= p.keys() for p in predictions["results"])
     assert all(p["action"]["executed"] is False or p["remediation"]["simulation_required"]
                for p in predictions["results"])
-    print("PASS: 100 public scenarios, expected distribution, blind runner output, simulation requirement")
+    print("PASS: 100 schema-valid scenarios, actual distribution, blind runner output, simulation requirement")
 
 
 if __name__ == "__main__":
