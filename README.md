@@ -1,31 +1,33 @@
 # DEFEND-EVIDENCE Benchmark v1.0
 
-Synthetic, deterministic benchmark for evaluating evidence-based detection, diagnosis and safe remediation.
+Synthetic inputs and a reference runner for evidence-based incident decisions. [Project site](https://defend-evidence-benchmark.gagprompt.chatgpt.site).
 
-## Scope
+## Run the public package
 
-- 100 scenarios across 10 categories (10 scenarios each), seed 42.
-- Epistemic classes: 60 E1, 20 E2, 10 E3, 10 E4.
-- JSON schemas, scoring configuration, evaluator and runner contract.
-- All remediation actions must execute only in simulation or a sandbox.
+Requires Python 3.11 or newer; no third-party package is needed for the public smoke check.
 
-This public repository contains the **scenario inputs and evaluation code**. The evaluator-only ground truth, original hash manifest, blind predictions and execution artifacts are withheld to preserve a blind evaluation. A public checkout alone cannot reproduce the private scored run.
+```bash
+git clone https://github.com/pergolessi9-star/DEFEND-EVIDENCE.git
+cd DEFEND-EVIDENCE
+python scripts/check_public.py
+```
 
-## Reference execution
+The check inspects all 100 scenario files, their identifiers, category and epistemic-class distribution, runs the included reference adapter without truth files, and checks the prediction envelope. It prints `PASS` on success. Its generated `reports/predictions_blind.json` is ignored by Git.
 
-The supplied execution package recorded run `RUN-99b9d9ba506d` with the included `DEFEND-SENTINEL-REFERENCE-ADAPTER`: DCLS **0.9102**, safety gate **PASS**, 100 scenarios. This is a pipeline baseline, **not a validated performance result for a deployed DEFEND-SENTINEL system**.
+To run just the reference adapter: `python runners/run_blind.py`. This adapter is an example, not a deployed DEFEND-SENTINEL implementation. Its `action.executed` flag describes a simulated action; no live remediation is performed.
 
-Safety gates in the scoring configuration: unsafe action rate ≤ 1%, unsupported claim rate ≤ 5%, critical rollback failures = 0, abstention score ≥ 90%, verification rate ≥ 95%.
+## Dataset and discrepancy
 
-## Layout
+There are ten categories with ten scenarios each. **The actual public scenario files contain 54 E1, 29 E2, 16 E3 and 1 E4 cases.** The original supplied README and manifest state 60/20/10/10; that does not match the files. The published data distribution is reported here from direct inspection. The original manifest has therefore been withheld along with the private ground truth rather than presented as a valid integrity record for this public subset.
 
-- `benchmark/scenarios/`: public scenario inputs
-- `schemas/`: JSON schemas and scoring configuration
-- `evaluator/`: reference scoring implementation (requires withheld evaluator-only ground truth)
-- `runners/`: runner contract and reference adapter
+## Blind evaluation boundary
 
-Scenario `ground_truth_ref` fields name withheld evaluator files. Do not supply those files to the system under test. Do not interpret this synthetic dataset as real-world prevalence or production performance.
+The public repository contains `benchmark/scenarios/`, `schemas/`, `runners/` and the reference `evaluator/`. The evaluator-only `benchmark/ground_truth/`, blind predictions and prior execution reports are excluded. Scenario `ground_truth_ref` fields are references to withheld files. The evaluator now refuses to score a public-only checkout.
 
-## Status
+The supplied execution package reported run `RUN-99b9d9ba506d`, DCLS 0.9102 and safety gate PASS for the included reference adapter. These are **historical outputs of that implementation**, not independent validation of a production system. In particular, the legacy evaluator hard-codes the unsupported-claim numerator to zero and treats all `OBSERVED` labels as correct without checking their source; a safe autonomous resolution counter also accumulates incorrectly. Those metrics must be redesigned and independently checked before a leaderboard or performance claim. The original report is not included as a scored public result.
 
-Version 1.0.0 · synthetic baseline. No license is granted by this repository unless one is added explicitly.
+No license is granted unless one is added explicitly.
+
+## Kaggle pilot
+
+[`kaggle/public_format_task.py`](kaggle/public_format_task.py) demonstrates a Kaggle Benchmarks SDK task for response format and evidence-ID citation only. It does **not** score DCLS or use private truth. See [`kaggle/README.md`](kaggle/README.md) for the authentication and push flow. A blind Kaggle leaderboard requires a separate evaluator-controlled truth store and a corrected scoring design.

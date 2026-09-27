@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+reports/
+.env
+.venv/
+benchmark/ground_truth/
+benchmark_manifest.json

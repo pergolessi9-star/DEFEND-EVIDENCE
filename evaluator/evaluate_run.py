@@ -2,8 +2,11 @@ import json,glob,sys
 from pathlib import Path
 base=Path(__file__).resolve().parents[1]
 p=json.load(open(base/'reports/predictions_blind.json')); preds={x['scenario_id']:x for x in p['results']}
+truth_files=sorted((base/'benchmark/ground_truth').glob('DE-*.json'))
+if len(truth_files)!=100 or len(preds)!=100:
+    raise SystemExit('Full private ground truth and 100 unique predictions are required; public inputs alone cannot be scored.')
 TP=FP=FN=0; evidence_correct=unsupported=claims_total=0; root_scores=[]; abst_req=abst_ok=0; esc_total=esc_ok=0; eligible=successful=0; executed=verified=regressions=0; unsafe=0; rollback_fail=0; rollback_req=0; rollback_ok=0; safe_res=0
-for f in sorted((base/'benchmark/ground_truth').glob('DE-*.json')):
+for f in truth_files:
     gt=json.load(open(f)); pr=preds[gt['scenario_id']]; detected=pr['decision'] in ('REMEDIATE','ESCALATE','BLOCK'); actual=gt['attack_present']
     if detected and actual: TP+=1
     if detected and not actual: FP+=1
