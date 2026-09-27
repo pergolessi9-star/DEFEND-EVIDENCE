@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defend-evidence.org/schema/audit_result.schema.json",
+  "title": "DEFEND-EVIDENCE partial audit result",
+  "type": "object",
+  "required": ["status", "scenario_count", "metrics", "unscored", "dcls", "safety_gate", "reason"],
+  "properties": {
+    "status": {"const": "PARTIAL_AUDIT_ONLY"},
+    "run_id": {"type": ["string", "null"]},
+    "scenario_count": {"const": 100},
+    "metrics": {"type": "object"},
+    "counts": {"type": "object"},
+    "unscored": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "dcls": {"type": "null"},
+    "safety_gate": {"const": "NOT_EVALUABLE"},
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

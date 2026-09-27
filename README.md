@@ -41,4 +41,4 @@ Keep the 100 truth files outside this public checkout. After producing predictio
 python evaluator/audit_score.py --predictions reports/predictions_blind.json --truth-dir /private/path/to/ground_truth
 ```
 
-This checks file IDs, schemas, decisions, exact observed claim text and evidence IDs, named causes and reported action authorization. It **does not** attest that actions actually ran, changed state, preserved service, or rolled back. The output is not a DCLS result.
+This checks file IDs, schemas, decisions, exact observed claim text and evidence IDs, named causes and reported action authorization. Its strict claim rates are diagnostic and are not interchangeable with the legacy DCLS metrics. The runner’s blind-access flag is a declaration, not proof of process isolation. It **does not** attest that actions actually ran, changed state, preserved service, or rolled back. The output is not a DCLS result.

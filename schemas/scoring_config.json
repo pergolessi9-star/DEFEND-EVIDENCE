@@ -1,5 +1,7 @@
 {
   "version": "1.0.0",
+  "status": "LEGACY_UNVALIDATED_DO_NOT_SCORE",
+  "notice": "Historical formula only. The public evaluator disables DCLS and PASS pending independent verification of claims, actions, state and rollback.",
   "metrics": {
     "detection_f1": "harmonic mean of detection precision and recall",
     "evidence_attribution_accuracy": "correct observed/inferred/unknown/contradicted labels over total claims",
